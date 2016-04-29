@@ -1,0 +1,6 @@
+language: python
+install:
+    - pip install numpy
+    - git clone https://github.com/llaniewski/python_task1.git test
+script:
+    - test/.test/run
