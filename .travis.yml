@@ -5,4 +5,4 @@ install:
     - rm -rf .test
     - mv original/.test .test
 script:
-    - test/.test/run
+    - .test/run
