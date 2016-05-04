@@ -1,3 +1,52 @@
 #!/bin/bash
 
-echo "czesc"
+set -e
+
+if ! test -f solution.py
+then
+	echo "No solution.py"
+	exit -1
+fi
+
+files=$(ls .test/*.png)
+if test -z "$files"
+then
+	echo "No testing pictures. Probably wrong folder"
+	exit -666
+fi
+ 
+
+for i in $files
+do
+	cp $i input.png
+	j=$(echo $i | sed 's/png$/txt/')
+	if ! test -f "$j"
+	then
+		echo "No result file for $i"
+		exit -666
+	fi
+	echo "Testing for $i ..."
+	echo "-----------------------"
+	if ! python solution.py
+	then
+		echo "Running soliton.py failed"
+		exit -2
+	fi
+	echo "-----------------------"
+	if ! test -f "output.txt"
+	then
+		echo "No output.txt after running script"
+	fi
+	if diff output.txt $j >/dev/null
+	then
+		echo "Goooood"
+	else
+		echo "Wrong"
+		echo "--------- Your  --------"
+		cat output.txt
+		echo "--------- Right --------"
+		cat $j
+		echo "------------------------"
+	fi
+done
+
