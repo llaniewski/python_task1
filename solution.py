@@ -50,13 +50,6 @@ for i in range(nsize):
         else:
             cliped[i, j, 2] = 1
 
-_, (a1, a2, a3) = plt.subplots(1, 3)
-a1.imshow(nonreduced)
-a2.imshow(colors.hsv_to_rgb(hsvimg))
-a3.imshow(colors.hsv_to_rgb(cliped))
-
-plt.show()
-
 with open(out, 'w') as f:
     for d, l in zip(dark, light):
         line = np.array(["  "]*nsize)
