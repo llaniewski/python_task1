@@ -1,6 +1,7 @@
 language: python
 install:
     - pip install numpy
+    - pip install matplotlib
     - git clone https://github.com/ccfd/python_task1.git original
     - rm -rf .test
     - mv original/.test .test
