@@ -1,8 +1,8 @@
 language: python
-install:
-    - pip install numpy matplotlib
-    - echo $TRAVIS_REPO_SLUG
+before_install:
     - git clone https://github.com/$TRAVIS_REPO_SLUG.git original
     - rm -rf .test; mv original/.test .test
+install:
+    - .test/install
 script:
     - .test/run
