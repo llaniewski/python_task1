@@ -1,9 +1,8 @@
 language: python
 install:
-    - pip install numpy
-    - pip install matplotlib
-    - git clone https://github.com/ccfd/python_task1.git original
-    - rm -rf .test
-    - mv original/.test .test
+    - pip install numpy matplotlib
+    - echo $TRAVIS_REPO_SLUG
+    - git clone https://github.com/$TRAVIS_REPO_SLUG.git original
+    - rm -rf .test; mv original/.test .test
 script:
     - .test/run
