@@ -50,6 +50,7 @@ for i in range(nsize):
         else:
             cliped[i, j, 2] = 1
 
+
 with open(out, 'w') as f:
     for d, l in zip(dark, light):
         line = np.array(["  "]*nsize)
